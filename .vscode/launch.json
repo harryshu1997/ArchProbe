@@ -1,0 +1,53 @@
+{
+    "configurations": [
+      {
+        "name": "Remote Debugging",
+        "type": "lldb",
+        "request": "launch",
+        "program": "${command:cmake.launchTargetPath}",
+        // Run this on another terminal: adb shell "cd /data/local/tmp; ./lldb-server p --server --listen '*:9999'"
+        "initCommands": [
+          "platform select remote-android",
+          "platform connect connect://localhost:9999",
+          "settings set target.inherit-env false"
+        ],
+        "args": [
+        ],
+        "cwd": "/data/local/tmp/archProb/",
+        "env": {
+          "LD_LIBRARY_PATH": "/data/local/tmp/archProb"
+        }
+      },
+      {
+        "name": "Convert",
+        "type": "lldb",
+        "request": "launch",
+        "program": "${workspaceFolder}/build/linux-amd64-convert/tools/onnx2tnn/onnx-converter/onnx2tnn_cpp",
+        "args": [
+          "/home/monsterharry/Desktop/dynn/./model/converted/stable_diffusion_unet-arm/sd_unet-32-half-opencl/cutted_model.onnx ",
+          "/home/monsterharry/Desktop/dynn/./model/converted/stable_diffusion_unet-arm/sd_unet-32-half-opencl",
+          "v1.0",
+          "Now",
+          "1",
+          "0"
+        ],
+        "stopAtEntry": false,
+        "cwd": "${workspaceFolder}/build/linux-amd64-convert",
+        // "environment": [],
+        // "externalConsole": false,
+        // "MIMode": "gdb",
+        // "setupCommands": [
+        //   {
+        //     "description": "Enable pretty-printing for gdb",
+        //     "text": "-enable-pretty-printing",
+        //     "ignoreFailures": true
+        //   },
+        //   {
+        //     "description": "Set Disassembly Flavor to Intel",
+        //     "text": "-gdb-set disassembly-flavor intel",
+        //     "ignoreFailures": true
+        //   }
+        // ]
+      }
+    ]
+  }
