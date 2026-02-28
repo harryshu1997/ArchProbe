@@ -1,1 +1,2 @@
 add_subdirectory(archprobe)
+add_subdirectory(archprobe_analyzer)

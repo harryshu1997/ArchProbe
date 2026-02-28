@@ -503,7 +503,7 @@ namespace aspects {
 
     cl::ImageFormat img_fmt(CL_RGBA, CL_FLOAT);
     cl::Image2D in_img =
-      env.create_img_2d(0, img_fmt, MAX_IMG_WIDTH, MAX_IMG_HEIGHT);
+      env.create_img_2d(0, img_fmt, MAX_IMG_WIDTH-10, MAX_IMG_HEIGHT-10);
     cl::Buffer out_buf = env.create_buf(0, sizeof(float));
 
     auto bench = [&](uint32_t nthread, uint32_t dim) {
